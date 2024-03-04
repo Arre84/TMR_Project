@@ -11,12 +11,11 @@ def load_image(img):
 def preprocessing(img):
     grey = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
     blurred = cv2.GaussianBlur(grey,(5,5),0)
-    withe_color = cv2.threshold(blurred, 150, 255, cv2.THRESH_BINARY)[1]
-    edged_image = cv2.Canny(withe_color,150,255)
+    edged_image = cv2.Canny(blurred,100,230)
     return edged_image
 
 
-prueba = load_image("Prueba1.png")
+prueba = load_image("Prueba2.jpg")
 image = preprocessing(prueba)
 cv2.imshow("Test",image)
 cv2.waitKey(0)
